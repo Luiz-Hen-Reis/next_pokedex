@@ -1,0 +1,19 @@
+.filter {
+    margin-bottom: 6rem;
+}
+
+.h1 {
+    margin: 1rem 0 1rem .3rem;
+}
+
+.typesContainer {
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 640px) {
+  .typesContainer {
+    width: 50%;
+    align-items: left;
+    justify-content: flex-start;
+  }
+}

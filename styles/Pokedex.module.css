@@ -1,0 +1,25 @@
+.pokedex {
+    max-width: 64rem;
+    margin: auto;
+}
+
+
+@media screen and (min-width: 640px) {
+    .pokedex {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+@media screen and (min-width: 780px) {
+    .pokedex {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+@media screen and (min-width: 980px) {
+    .pokedex {
+        grid-template-columns: repeat(4, 1fr);
+    }
+  }

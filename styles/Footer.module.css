@@ -1,0 +1,14 @@
+.footer {
+    color: var(--blue-gray-200);
+    background-color: var(--blue-gray-600);
+    height: 20rem;
+}
+
+.footer p{
+    margin: 0;
+}
+
+.footer p a{
+    all: unset;
+    cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.type {
+    padding: .75rem;
+    margin: .3rem;
+    border-radius: .75rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 500;
+}

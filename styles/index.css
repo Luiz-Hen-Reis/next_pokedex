@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Marhey:wght@400;700&display=swap');
+
+:root {
+  --blue-gray-600: #475569;
+  --blue-gray-200: #e2e8f0;
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Marhey', cursive;;
+}
+
+main {
+  background-color: var(--blue-gray-200);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
