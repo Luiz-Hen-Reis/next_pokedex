@@ -1,0 +1,16 @@
+.pokemonInfo {
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pokemonInfo h1 {
+    text-transform: capitalize;
+}
+
+.infoContainer p {
+    margin: 0;
+    width: 100%;
+}

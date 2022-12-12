@@ -1,6 +1,6 @@
-import { pokemonTypes } from '../data/pokemonTypes'
 import styles from '../styles/Filter.module.css'
 import Type from './Type'
+import { pokemonTypes } from '../data/pokemonTypes'
 
 const FilterArea = () => {
   return (

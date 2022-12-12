@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { FilterArea, Footer, Header, Pokedex } from "../components";
-import { POKEAPI } from "../services/pokeapi";
-import { Pokemon, RawData } from "../types/Pokeapi";
+import { GET_POKEMONS_LIST } from "../services/pokeapi";
+import { Pokemon } from "../types/Pokeapi";
 
 type Props = {
   pokemons: Pokemon[]
@@ -29,14 +29,12 @@ const App = ({ pokemons }: Props) => {
 export default App;
 
 export const getServerSideProps = async () => {
-  const resp: RawData = await POKEAPI.FETCH_POKEMONS();
-  const promise = resp.results.map(async (pokemon) => POKEAPI.GET_POKEMONS(pokemon.url));
-
-  const results = await Promise.all(promise);
+  
+  const pokemons = await GET_POKEMONS_LIST();
 
   return {
     props: {
-      pokemons: results
+      pokemons
     }
   }
 }

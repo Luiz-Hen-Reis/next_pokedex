@@ -20,8 +20,14 @@ h6 {
   font-family: 'Marhey', cursive;;
 }
 
+a {
+  all: unset;
+  cursor: pointer;
+}
+
 main {
   background-color: var(--blue-gray-200);
+  padding-bottom: 3rem;
 }
 
 .flex {

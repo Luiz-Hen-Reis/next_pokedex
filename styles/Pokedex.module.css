@@ -3,11 +3,30 @@
     margin: auto;
 }
 
+.loadMore {
+    padding: 2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-2xl);
+    transition: all ease .3s;
+}
+
+.loadMore:hover {
+    background-color: var(--blue-gray-600);
+    color: var(--blue-gray-200);
+}
 
 @media screen and (min-width: 640px) {
     .pokedex {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        padding-bottom: 1rem;
+        padding: 0 auto 3rem;
+    }
+
+    .loadMore {
+        max-width: 64rem;
+        margin: auto;
     }
   }
 
