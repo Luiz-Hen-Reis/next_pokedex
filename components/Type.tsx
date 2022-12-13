@@ -9,8 +9,8 @@ type Props = {
 
 const Type = ({ type }: Props) => {
   return (
-    <Link href={`/type/${type}`}>
-      <div
+      <Link href={`/type/${type}`}>
+        <div
         style={{
           backgroundImage: `url(${backgrounds[type as keyof Backgrounds]})`,
         }}
@@ -18,7 +18,7 @@ const Type = ({ type }: Props) => {
       >
         {type}
       </div>
-    </Link>
+      </Link>
   );
 };
 

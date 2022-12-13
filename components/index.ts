@@ -6,5 +6,6 @@ import Loading from "./Loading";
 import TypeCard from "./TypeCard";
 import PokemonCard from "./PokemonCard";
 import InfoItem from "./InfoItem";
+import Layout from "./Layout";
 
-export { Header, FilterArea, Pokedex, Footer, Loading, TypeCard, PokemonCard, InfoItem };
+export { Header, FilterArea, Pokedex, Footer, Loading, TypeCard, PokemonCard, InfoItem, Layout };

@@ -6,25 +6,27 @@ import { Pokemon } from "../types/Pokeapi";
 
 type Props = {
   pokemons: Pokemon[];
+  loading?: boolean;
+  handleLoadMorePokemons?: () => void;
 };
 
-const Pokedex = ({ pokemons }: Props) => {
-  const { pokemonsOnScreen, loading, handleLoadMorePokemons } = useLoadMore(pokemons);
-
+const Pokedex = ({ pokemons, loading, handleLoadMorePokemons }: Props) => {
   return (
     <>
       <div className={styles.pokedex}>
-        {pokemonsOnScreen.map((pokemon) => (
+        {pokemons.map((pokemon) => (
           <PokemonCard pokemon={pokemon} key={pokemon.id} />
         ))}
       </div>
       {loading && <Loading />}
-      <div
-        onClick={handleLoadMorePokemons}
-        className={`flex items-center ${styles.loadMore}`}
-      >
-        <h3>Load More</h3>
-      </div>
+      {handleLoadMorePokemons && (
+        <div
+          onClick={handleLoadMorePokemons}
+          className={`flex items-center ${styles.loadMore}`}
+        >
+          <h3>Load More</h3>
+        </div>
+      )}
     </>
   );
 };

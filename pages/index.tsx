@@ -1,42 +1,33 @@
 import Head from "next/head";
-import { FilterArea, Footer, Header, Pokedex } from "../components";
+import { Layout, Pokedex } from "../components";
+import useLoadMore from "../hooks/useLoadMore";
 import { GET_POKEMONS_LIST } from "../services/pokeapi";
 import { Pokemon } from "../types/Pokeapi";
 
 type Props = {
-  pokemons: Pokemon[]
-}
+  pokemons: Pokemon[];
+};
 
 const App = ({ pokemons }: Props) => {
+  const { pokemonsOnScreen, loading, handleLoadMorePokemons } = useLoadMore(pokemons);
+
   return (
     <>
-      <Head>
-        <title>Pokedex</title>
-      </Head>
-
-      <Header />
-
-      <main>
-        <FilterArea />
-        <Pokedex pokemons={pokemons} />
-      </main>
-
-      <Footer />
+      <Pokedex pokemons={pokemonsOnScreen} loading={loading} handleLoadMorePokemons={handleLoadMorePokemons} />
     </>
   );
 };
 
+App.PageLayout = Layout;
+
 export default App;
 
-export const getServerSideProps = async () => {
-  
+export const getStaticProps = async () => {
   const pokemons = await GET_POKEMONS_LIST();
 
   return {
     props: {
-      pokemons
-    }
-  }
-}
-
-
+      pokemons,
+    },
+  };
+};

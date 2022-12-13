@@ -1,58 +1,79 @@
-import Head from "next/head";
-import styles from "../../styles/Pokedex.module.css";
-import { useEffect } from 'react';
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { FilterArea, Footer, Header, PokemonCard } from "../../components";
-import { GET_POKEMONS_LIST } from "../../services/pokeapi";
-import { Pokemon } from "../../types/Pokeapi";
-import useLoadMore from "../../hooks/useLoadMore";
+import { useEffect, useState } from "react";
+import { Layout, Loading, Pokedex } from "../../components";
+import {
+  GET_POKEMONS_TYPES,
+  GET_POKEMON_INFO,
+  GET_POKEMON_TYPE,
+} from "../../services/pokeapi";
+import { Pokemon, PokemonType } from "../../types/Pokeapi";
 
 type Props = {
   pokemons: Pokemon[];
+  type: PokemonType;
 };
 
-const pokeType = ({ pokemons }: Props) => {
- const { handleLoadMorePokemons, pokemonsOnScreen, loading } = useLoadMore(pokemons);
+const pokeType = ({ type }: Props) => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { pokeType } = useRouter().query;
+
+  const arrayLimit = 24;
+  useEffect(() => {
+    const getPokemonsFiltered = async () => {
+      setLoading(true);
+      const pokemonsFilteredArray = type.pokemon.slice(0, arrayLimit);
+
+      const promise = pokemonsFilteredArray.map(async (pokemon) =>
+        GET_POKEMON_INFO(pokemon.pokemon.name)
+      );
+
+      setPokemons(await Promise.all(promise));
+      setLoading(false);
+    };
+
+    getPokemonsFiltered();
+  }, [pokeType]);
 
   return (
-    <>
-      <Head>
-        <title>Pokedex</title>
-      </Head>
-
-      <Header />
-      <main>
-        <FilterArea />
-        <div className={styles.pokedex}>
-          {pokemonsOnScreen.map((pokemon) => (
-            <PokemonCard pokemon={pokemon} key={pokemon.id} />
-          ))}
-        </div>
-        <div onClick={handleLoadMorePokemons} className={`flex items-center ${styles.loadMore}`}>
-        <h3>Load More</h3>
-      </div>
-      </main>
-
-      <Footer />
-    </>
+    <div>
+      {loading && <Loading />}
+      {!loading && <Pokedex pokemons={pokemons} />}
+    </div>
   );
 };
 
+pokeType.PageLayout = Layout;
+
 export default pokeType;
+
+export const getStaticPaths = async () => {
+  const types = await GET_POKEMONS_TYPES();
+
+  const paths = types.map((pokemon: { name: string }) => ({
+    params: {
+      pokeType: pokemon.name,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 interface IParams extends ParsedUrlQuery {
   pokeType: string;
 }
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { pokeType } = context.params as IParams;
+  const type: PokemonType = await GET_POKEMON_TYPE(pokeType);
 
-
-  
   return {
     props: {
-
-    }
-  }
+      type,
+    },
+  };
 };

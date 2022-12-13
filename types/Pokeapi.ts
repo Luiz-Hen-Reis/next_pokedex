@@ -37,7 +37,27 @@ export interface Pokemon {
     other: {
       dream_world: {
         front_default: string;
+      };
+    };
+  };
+}
+
+export interface PokemonTypes {
+  results: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+}
+
+export interface PokemonType {
+  pokemon: [
+    {
+      pokemon: {
+        name: string;
+        url: string;
       }
     }
-  };
+  ]
 }

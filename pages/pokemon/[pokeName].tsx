@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { backgrounds } from "../../data/backgrounds";
-import { POKEAPI } from "../../services/pokeapi";
+import { GET_POKEMON_INFO } from "../../services/pokeapi";
 import { Backgrounds } from "../../types/Backgrounds";
 import { Pokemon } from "../../types/Pokeapi";
 import { InfoItem, TypeCard } from '../../components';
@@ -40,7 +40,7 @@ interface IParams extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { pokeName } = context.params as IParams;
   
-  const pokemon = await POKEAPI.GET_POKEMON_INFO(pokeName as string);
+  const pokemon = await GET_POKEMON_INFO(pokeName as string);
 
   return {
     props: {
