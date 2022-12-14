@@ -1,7 +1,6 @@
 import styles from "../styles/Pokedex.module.css";
 import PokemonCard from "./PokemonCard";
 import Loading from "./Loading";
-import useLoadMore from "../hooks/useLoadMore";
 import { Pokemon } from "../types/Pokeapi";
 
 type Props = {
