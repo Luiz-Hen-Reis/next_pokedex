@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Header.module.css";
-import { FcSearch } from 'react-icons/fc';
 import Link from "next/link";
+import SearchBar from "./SearchBar";
  
 const Header = () => {
   return (
@@ -12,12 +12,7 @@ const Header = () => {
         width={100}
         height={40}
       /></Link>
-      <div className={`hidden ${styles.searchBar}`}>
-        <input type="text" placeholder="Search Pokemon" className={styles.input} />
-        <button className={styles.button}>
-            <FcSearch size={20} />
-        </button>
-      </div>
+      <SearchBar />
     </header>
   );
 };

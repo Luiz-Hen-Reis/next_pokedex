@@ -67,6 +67,7 @@ export const getStaticPaths = async () => {
 interface IParams extends ParsedUrlQuery {
   pokeType: string;
 }
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const { pokeType } = context.params as IParams;
   const type: PokemonType = await GET_POKEMON_TYPE(pokeType);
