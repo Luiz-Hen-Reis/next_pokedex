@@ -9,14 +9,14 @@ const search = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const router = useRouter();
   const { p } = router.query;
-const pokemonArray: Pokemon[] = [];
+  const pokemonArray: Pokemon[] = [];
 
   useEffect(() => {
     const searchPokemonInfo = async () => {
       setLoading(true);
       if (p) {
         const data = await GET_POKEMON_INFO(p as string);
-        pokemonArray.push(data)
+        pokemonArray.push(data);
         setPokemons(pokemonArray);
       }
       setLoading(false);
@@ -25,9 +25,11 @@ const pokemonArray: Pokemon[] = [];
     searchPokemonInfo();
   }, [p]);
 
-  return <>
-    <Pokedex pokemons={pokemons} loading={loading} />
-  </>;
+  return (
+    <>
+      <Pokedex pokemons={pokemons} loading={loading} />
+    </>
+  );
 };
 
 search.PageLayout = Layout;
