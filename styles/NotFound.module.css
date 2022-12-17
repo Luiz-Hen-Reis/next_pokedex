@@ -1,0 +1,29 @@
+.container {
+    background-image: url('/404.jpg');
+    background-size: cover;
+    background-position: left center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.link {
+    color: #00f;
+}
+
+@media screen and (min-width: 980px) {
+    .container {
+        background-position: center bottom;
+    }
+
+    .h1 {
+        font-size: 5rem;
+    }
+
+    .p {
+        font-size: 3rem;
+    }
+
+    .link {
+        font-size: 2rem;
+    }
+  }
