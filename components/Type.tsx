@@ -9,7 +9,7 @@ type Props = {
 
 const Type = ({ type }: Props) => {
   return (
-      <Link href={`/type/${type}`}>
+      <Link href={`${type === 'show all' ? '/' : `/type/${type}`}`}>
         <div
         style={{
           backgroundImage: `url(${backgrounds[type as keyof Backgrounds]})`,

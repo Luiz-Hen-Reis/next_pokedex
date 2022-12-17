@@ -1,4 +1,5 @@
 export const backgrounds = {
+  'show all': "",
   bug: "/bug-background.jpg",
   dark: "/dark-background.jpg",
   dragon: "/dragon-background.jpg",

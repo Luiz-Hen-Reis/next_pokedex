@@ -1,4 +1,5 @@
 export const pokemonTypes = [
+  'show all',
   'bug',
   'dark',
   'dragon',
