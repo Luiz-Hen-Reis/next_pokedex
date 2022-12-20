@@ -4,13 +4,30 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+}
+
+.backButton {
+    position: absolute;
+    top: 1.76rem;
+    left: 1rem;
+    border-bottom: 1px solid #000;
+}
+
+.backButton span {
+    margin-right: .5rem;
 }
 
 .pokemonInfo h1 {
     text-transform: capitalize;
 }
 
+.infoContainer {
+    width: 50%;
+    margin-top: 1rem;
+}
+
 .infoContainer p {
+    justify-content: space-between;
     margin: 0;
-    width: 100%;
 }

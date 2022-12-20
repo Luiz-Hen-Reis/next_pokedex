@@ -15,7 +15,7 @@ type Props = {
   type: PokemonType;
 };
 
-const pokeType = ({ type }: Props) => {
+const pokeTypePage = ({ type }: Props) => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
   const { pokeType } = useRouter().query;
@@ -45,9 +45,9 @@ const pokeType = ({ type }: Props) => {
   );
 };
 
-pokeType.PageLayout = Layout;
+pokeTypePage.PageLayout = Layout;
 
-export default pokeType;
+export default pokeTypePage;
 
 export const getStaticPaths = async () => {
   const types = await GET_POKEMONS_TYPES();

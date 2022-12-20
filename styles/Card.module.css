@@ -1,18 +1,27 @@
 .card {
-    width: 14.25rem;
-    height: 19.25rem;
-    background-position: top;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin: 2rem auto;
-    border-radius: .75rem;
-    box-shadow: var(--shadow-2xl);
+  width: 14.25rem;
+  height: 19.25rem;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 2rem auto;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-2xl);
+  transition: all ease 0.3;
+}
+
+.card:hover {
+  box-shadow: 1px 1px var(--blue-gray-600), 2px 2px var(--blue-gray-600),
+    3px 3px var(--blue-gray-600);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .pokemonInfo {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .types {
-    margin-top: .75rem;
+  margin-top: 0.75rem;
 }

@@ -15,6 +15,13 @@ export interface Pokemon {
   height: number;
   weight: number;
   name: string;
+  abilities: [
+    {
+      ability: {
+        name: string;
+      }
+    }
+  ];
   types: [
     {
       slot: number;
@@ -57,7 +64,7 @@ export interface PokemonType {
       pokemon: {
         name: string;
         url: string;
-      }
+      };
     }
-  ]
+  ];
 }

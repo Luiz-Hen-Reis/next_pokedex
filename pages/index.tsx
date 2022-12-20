@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Layout, Pokedex } from "../components";
 import useLoadMore from "../hooks/useLoadMore";
 import { GET_POKEMONS_LIST } from "../services/pokeapi";

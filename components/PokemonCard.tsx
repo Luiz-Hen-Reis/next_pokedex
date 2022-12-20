@@ -2,8 +2,8 @@ import styles from "../styles/Card.module.css";
 import { Pokemon } from "../types/Pokeapi";
 import { backgrounds } from "../data/backgrounds";
 import { Backgrounds } from "../types/Backgrounds";
-import TypeCard from "./TypeCard";
 import Link from "next/link";
+import Type from "./Type";
 
 type Props = {
   pokemon: Pokemon;
@@ -34,7 +34,7 @@ const PokemonCard = ({ pokemon }: Props) => {
           </h2>
           <div className={`flex ${styles.types}`}>
             {pokemon.types.map((poke, index) => (
-              <TypeCard type={poke.type.name} key={index} />
+              <Type type={poke.type.name} key={index} />
             ))}
           </div>
         </div>

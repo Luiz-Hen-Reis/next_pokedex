@@ -1,5 +1,4 @@
 import styles from "../styles/Type.module.css";
-import Link from "next/link";
 import { backgrounds } from "../data/backgrounds";
 import { Backgrounds } from "../types/Backgrounds";
 
@@ -9,16 +8,14 @@ type Props = {
 
 const Type = ({ type }: Props) => {
   return (
-      <Link href={`${type === 'show all' ? '/' : `/type/${type}`}`}>
-        <div
-        style={{
-          backgroundImage: `url(${backgrounds[type as keyof Backgrounds]})`,
-        }}
-        className={`flex ${styles.type}`}
-      >
-        {type}
-      </div>
-      </Link>
+    <div
+      style={{
+        backgroundImage: `url(${backgrounds[type as keyof Backgrounds]})`,
+      }}
+      className={`flex ${styles.type}`}
+    >
+      {type}
+    </div>
   );
 };
 
