@@ -17,7 +17,7 @@ type Props = {
   pokemon: Pokemon;
 };
 
-const pokemonInfoScreen = ({ pokemon }: Props) => {
+const PokemonInfoScreen = ({ pokemon }: Props) => {
   return (
     <>
       <Head>
@@ -60,7 +60,7 @@ const pokemonInfoScreen = ({ pokemon }: Props) => {
   );
 };
 
-export default pokemonInfoScreen;
+export default PokemonInfoScreen;
 
 interface IParams extends ParsedUrlQuery {
   pokeName: string;

@@ -5,15 +5,15 @@ import { formatSearchBarValue } from "../helpers/formatSearchBarValues";
 import { GET_POKEMON_INFO } from "../services/pokeapi";
 import { Pokemon } from "../types/Pokeapi";
 
-const search = () => {
+const Search = () => {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [pokemonNotFound, setPokemonNotFound] = useState(false);
   const router = useRouter();
   const { p } = router.query;
-  const pokemonArray: Pokemon[] = [];
 
   useEffect(() => {
+    const pokemonArray: Pokemon[] = [];
     const searchPokemonInfo = async () => {
       try {
         setLoading(true);
@@ -26,23 +26,29 @@ const search = () => {
         }
         setLoading(false);
       } catch (error) {
-        setLoading(false)
+        setLoading(false);
         setPokemonNotFound(true);
       }
     };
 
     searchPokemonInfo();
+
+    return () => {
+      setPokemons([]);
+    };
   }, [p]);
 
   return (
     <>
       {pokemons.length > 0 && <Pokedex pokemons={pokemons} loading={loading} />}
       {pokemonNotFound && loading && <Loading />}
-      {pokemonNotFound && !loading && <h1 className="flex items-center">Pokemon Not Found</h1>}
+      {pokemonNotFound && !loading && (
+        <h1 className="flex items-center">Pokemon Not Found</h1>
+      )}
     </>
   );
 };
 
-search.PageLayout = Layout;
+Search.PageLayout = Layout;
 
-export default search;
+export default Search;
