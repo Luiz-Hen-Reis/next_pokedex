@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className={`flex-col items-center ${styles.footer}`}>
         <p>&copy; All Rights Reserved</p>
-        <p><a href="https://github.com/Luiz-Hen-Reis" target="_blank"><span><FiGithub /></span> Luiz-Hen-Reis</a></p>
+        <p><a href="https://github.com/Luiz-Hen-Reis" target="_blank" rel='noreferrer'><span><FiGithub /></span> Luiz-Hen-Reis</a></p>
     </footer>
   )
 }

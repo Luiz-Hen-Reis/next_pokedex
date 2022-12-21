@@ -4,6 +4,7 @@ import { backgrounds } from "../data/backgrounds";
 import { Backgrounds } from "../types/Backgrounds";
 import Link from "next/link";
 import Type from "./Type";
+import Image from "next/image";
 
 type Props = {
   pokemon: Pokemon;
@@ -20,7 +21,7 @@ const PokemonCard = ({ pokemon }: Props) => {
         }}
       >
         <div className={`flex-col items-center ${styles.pokemonInfo}`}>
-          <img
+          <Image
             src={
               pokemon.sprites.versions["generation-v"]["black-white"].animated
                 .front_default
