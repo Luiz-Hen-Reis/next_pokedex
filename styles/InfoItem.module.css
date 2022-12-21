@@ -1,4 +1,4 @@
 .info {
     justify-content: space-between;
-    border-bottom: 1px dotted #000;
+    border-bottom: 1px dotted var(--blue-gray-200);
 }

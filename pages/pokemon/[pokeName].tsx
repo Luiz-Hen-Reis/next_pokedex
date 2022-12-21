@@ -17,55 +17,50 @@ type Props = {
   pokemon: Pokemon;
 };
 
-const pokeName = ({ pokemon }: Props) => {
+const pokemonInfoScreen = ({ pokemon }: Props) => {
   return (
     <>
       <Head>
         <title>{toCapitalize(pokemon.name)}</title>
       </Head>
       <div
-        className={`flex-col items-center ${styles.pokemonInfo}`}
+        className={`flex items-center ${styles.pageContainer}`}
         style={{
           backgroundImage: `url(${
             backgrounds[pokemon.types[0].type.name as keyof Backgrounds]
           })`,
         }}
       >
-        <Link href={"/"} className={`flex items-center ${styles.backButton}`}>
-          <span>
-            <BiArrowBack />
-          </span>
-          Back to Menu
-        </Link>
-        <Image
-          src={pokemon.sprites.other.dream_world.front_default}
-          alt={pokemon.name}
-          width={150}
-          height={150}
-          priority
-        />
-        <h1>
-          {pokemon.name} - #{pokemon.id > 10 ? pokemon.id : `0${pokemon.id}`}
-        </h1>
-        <div className={`flex items-center ${styles.typesContainer}`}>
-          {pokemon.types.map((type, index) => (
-            <Type type={type.type.name} key={index} />
-          ))}
-        </div>
-        <div className={`flex-col ${styles.infoContainer}`}>
-          <InfoItem
-            info="Ability"
-            value={toCapitalize(pokemon.abilities[0].ability.name)}
+        <Link className={styles.backButton} href={'/'}><span><BiArrowBack /></span>Back to Pokedex</Link>
+        <div className={`flex-col items-center ${styles.infoContainer}`}>
+          <Image
+            className={styles.image}
+            src={pokemon.sprites.other.dream_world.front_default}
+            alt={pokemon.name}
+            width={150}
+            height={150}
           />
-          <InfoItem info="Weight" value={`${pokemon.weight}KG`} />
-          <InfoItem info="Height" value={`${pokemon.height}M`} />
+          <div className={styles.pokemonInfo}>
+            <h1>{toCapitalize(pokemon.name)}</h1>
+            <div className={`flex items-center`}>
+              {pokemon.types.map((type, index) => (
+                <Type type={type.type.name} key={index} />
+              ))}
+            </div>
+            <InfoItem
+              info="Ability"
+              value={toCapitalize(pokemon.abilities[0].ability.name)}
+            />
+            <InfoItem info="Weight" value={`${pokemon.weight}KG`} />
+            <InfoItem info="Height" value={`${pokemon.height}M`} />
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default pokeName;
+export default pokemonInfoScreen;
 
 interface IParams extends ParsedUrlQuery {
   pokeName: string;
